@@ -25,7 +25,6 @@ class Product extends Model
         'meta_title',
         'meta_description',
         'meta_keywords'
-
     ];
 
     // Define the relationship with the Category model
@@ -35,7 +34,8 @@ class Product extends Model
     }
 
     // Autogenete slug from product name
-    protected static function boot(){
+    protected static function boot()
+    {
         parent::boot();
 
         static::creating(function ($product) {
@@ -49,5 +49,9 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
-    
+    // Relationship with the ProductVariant model
+    public function variants()
+    {
+        return $this->hasMany(ProductVariant::class);
+    }
 }
