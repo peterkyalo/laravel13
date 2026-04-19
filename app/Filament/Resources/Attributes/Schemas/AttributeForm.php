@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Attributes\Schemas;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class AttributeForm
 {
@@ -13,11 +14,14 @@ class AttributeForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->live(onBlur: true)
+                    ->afterStateHydrated(fn($state, $set) => $set('slug', Str::slug($state))),
                 TextInput::make('slug')
-                    ->required(),
+                    ->required()
+                    ->unique(ignoreRecord: true),
                 Toggle::make('status')
-                    ->required(),
+                    ->default(true)
             ]);
     }
 }

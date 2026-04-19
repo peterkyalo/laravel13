@@ -16,7 +16,8 @@ class AttributesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('slug')
                     ->searchable(),
                 IconColumn::make('status')
