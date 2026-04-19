@@ -54,4 +54,10 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class);
     }
+
+    // Relationship with the Brand model
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
 }
