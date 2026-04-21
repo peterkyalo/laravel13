@@ -60,4 +60,10 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
+    // Relationship with the AttributeValue model
+    public function attributeValues()
+    {
+        return $this->belongsToMany(AttributeValue::class);
+    }
 }

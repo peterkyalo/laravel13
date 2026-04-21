@@ -13,4 +13,10 @@ class AttributeValue extends Model
     {
         return $this->belongsTo(Attribute::class);
     }
+
+    // Define the relationship with Product
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }
